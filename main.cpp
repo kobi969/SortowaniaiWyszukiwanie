@@ -1,87 +1,83 @@
 #include <iostream>
 #include "wyszukiwania.hpp"
 #include "sortowania.hpp"
+
 using namespace std;
 
-
 int main() {
-    
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    //zliczanie elementow w tablicy
-    int n = sizeof(arr)/sizeof(arr[0]);
+    int n = sizeof(arr) / sizeof(arr[0]);
     int x = 64;
-    //wyswietlanie nieposortowanej tablicy
+
     cout << "Unsorted array: \n";
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << "\n";
-    //Search
-    // * Oznacza, że zmienna jest wskaźnikiem do liczby całkowitej.Posortowana tablica za pomaca sortowania babelkowego.
-    int* liniowy = search_linear(arr, x);
+
+    // Sortowanie Bąbelkowe
+    bubbleSort(arr, n);
+    cout << "Sorted array using Bubble Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << "\n";
+
+    // Sortowanie przez Wstawianie
+    int arr2[] = {64, 34, 25, 12, 22, 11, 90};
+    insertionSort(arr2, n);
+    cout << "Sorted array using Insertion Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr2[i] << " ";
+    cout << "\n";
+
+    // Sortowanie Koktajlowe
+    int arr3[] = {64, 34, 25, 12, 22, 11, 90};
+    cocktailSort(arr3, n);
+    cout << "Sorted array using Cocktail Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr3[i] << " ";
+    cout << "\n";
+
+    // Sortowanie Szybkie
+    int arr4[] = {64, 34, 25, 12, 22, 11, 90};
+    quickSort(arr4, 0, n - 1);
+    cout << "Sorted array using Quick Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr4[i] << " ";
+    cout << "\n";
+
+    // Sortowanie przez Scalanie
+    int arr5[] = {64, 34, 25, 12, 22, 11, 90};
+    mergeSort(arr5, 0, n - 1);
+    cout << "Sorted array using Merge Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr5[i] << " ";
+    cout << "\n";
+
+    // Wyszukiwanie
+    int liniowy = search_linear(arr, n, x);
+    int linowe_wartownikiem = search_linear_sentinel(arr, n, x);
+    int skokowe = search_jump(arr, n, x);
+    int binarny = search_binary(arr, n, x);
+    int interpolacyjne = search_interpolation(arr, n, x);
 
     cout << "wyszukiwanie liniowe index: \n";
     cout << liniowy << " ";
     cout << "\n";
-    //
-    int* linowe_wartownikiem = search_linear_sentinel(arr, x);
 
     cout << "wyszukiwanie linowe_wartownikiem index: \n";
-    cout <<  linowe_wartownikiem << " ";
+    cout << linowe_wartownikiem << " ";
     cout << "\n";
-    //
-    int* skokowe = search_jump(arr, x);
 
     cout << "wyszukiwanie skokowe index: \n";
     cout << skokowe << " ";
     cout << "\n";
-    //
-    int* binarny = search_binary(arr, x);
 
     cout << "wyszukiwanie binarne index: \n";
     cout << binarny << " ";
     cout << "\n";
-    //
-    int* interpolacyjne = ssearch_interpolation(arr, x);
 
     cout << "wyszukiwanie interpolacyjne index: \n";
     cout << interpolacyjne << " ";
-    cout << "\n";
-
-    //Sort
-    //* Oznacza, że zmienna jest wskaźnikiem do liczby całkowitej.Posortowana tablica za pomaca sortowania babelkowego.
-    int* bubble = bubbleSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << bubble[i] << " ";
-    cout << "\n";
-    //Posortowana tablica za pomaca sortowania wstawiania.
-    int* wstawianie = insertionSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << wstawianie[i] << " ";
-    cout << "\n";
-//Posortowana tablica za pomaca sortowania koktajlowe.
-    int* koktajl = cocktailSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << koktajl[i] << " ";
-    cout << "\n";
-
-    int* szybki = quickSort(arr, 0,n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << szybki[i] << " ";
-    cout << "\n";
-
-    int* scalanie = mergeSort(arr, 0,n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << scalanie[i] << " ";
     cout << "\n";
 
     return 0;

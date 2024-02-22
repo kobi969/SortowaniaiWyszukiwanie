@@ -1,10 +1,9 @@
 #include <iostream>
-#include <vector>
 #include <cmath>
 #include "wyszukiwania.hpp"
 
-int search_linear(std::vector<int>& arr, int x) {
-    for (int i = 0; i < arr.size(); ++i) {
+int search_linear(int arr[], int size, int x) {
+    for (int i = 0; i < size; ++i) {
         if (arr[i] == x) {
             return i;
         }
@@ -13,36 +12,32 @@ int search_linear(std::vector<int>& arr, int x) {
 }
 
 
-int search_linear_sentinel(std::vector<int>& arr, int x) {
-    int n = arr.size();
-    arr.push_back(x);  // dodajemy x na koniec tablicy
+int search_linear_sentinel(int arr[], int size, int x) {
+    arr[size] = x; // dodajemy x na koniec tablicy
     int i = 0;
     while (arr[i] != x) {
         i++;
     }
-    arr.pop_back();  // usuwamy dodany wartownik
-    if (i < n) {
+    if (i < size) {
         return i;
     } else {
         return -1;
     }
 }
 
-
-int search_jump(std::vector<int>& arr, int x) {
-    int n = arr.size();
-    int step = sqrt(n);
+int search_jump(int arr[], int size, int x) {
+    int step = sqrt(size);
     int prev = 0;
-    while (arr[std::min(step, n) - 1] < x) {
+    while (arr[std::min(step, size) - 1] < x) {
         prev = step;
-        step += sqrt(n);
-        if (prev >= n) {
+        step += sqrt(size);
+        if (prev >= size) {
             return -1;
         }
     }
     while (arr[prev] < x) {
         prev++;
-        if (prev == std::min(step, n)) {
+        if (prev == std::min(step, size)) {
             return -1;
         }
     }
@@ -53,9 +48,9 @@ int search_jump(std::vector<int>& arr, int x) {
 }
 
 
-int search_binary(std::vector<int>& arr, int x) {
+int search_binary(int arr[], int size, int x) {
     int low = 0;
-    int high = arr.size() - 1;
+    int high = size - 1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
         if (arr[mid] < x) {
@@ -70,9 +65,9 @@ int search_binary(std::vector<int>& arr, int x) {
 }
 
 
-int search_interpolation(std::vector<int>& arr, int x) {
+int search_interpolation(int arr[], int size, int x) {
     int low = 0;
-    int high = arr.size() - 1;
+    int high = size - 1;
     while (low <= high && x >= arr[low] && x <= arr[high]) {
         int pos = low + ((high - low) / (arr[high] - arr[low])) * (x - arr[low]);
         if (arr[pos] == x) {

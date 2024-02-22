@@ -3,54 +3,58 @@
 using namespace std;
 
 
-int main() {
-    srand( time( NULL ) );
-  const int n = 12
-    int arr[n];
-    for (int i = 0; i < n; ++i) {
-        arr[i] = std::rand() % 100; 
-    }
+#include <iostream>
+using namespace std;
 
-    //wyswietlanie nieposortowanej tablicy
+// Funkcje sortujące i wyszukujące (search functions) zostają zdefiniowane i dodane tutaj.
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int x = 64;
+
     cout << "Unsorted array: \n";
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << "\n";
 
-    //* Oznacza, że zmienna jest wskaźnikiem do liczby całkowitej.Posortowana tablica za pomaca sortowania babelkowego.
-int* bubble = bubbleSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << bubble[i] << " ";
-    cout << "\n";
-    //Posortowana tablica za pomaca sortowania wstawiania.
-    int* wstawianie = insertionSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << wstawianie[i] << " ";
-    cout << "\n";
-//Posortowana tablica za pomaca sortowania koktajlowe.
-    int* koktajl = cocktailSort(arr, n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << koktajl[i] << " ";
+    // Sortowanie Bąbelkowe
+    bubbleSort(arr, n);
+    cout << "Sorted array using Bubble Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr[i] << " ";
     cout << "\n";
 
-    int* szybki = quickSort(arr, 0,n);
-
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << szybki[i] << " ";
+    // Sortowanie przez Wstawianie
+    int arr2[] = {64, 34, 25, 12, 22, 11, 90};
+    insertionSort(arr2, n);
+    cout << "Sorted array using Insertion Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr2[i] << " ";
     cout << "\n";
 
-    int* scalanie = mergeSort(arr, 0,n);
+    // Sortowanie Koktajlowe
+    int arr3[] = {64, 34, 25, 12, 22, 11, 90};
+    cocktailSort(arr3, n);
+    cout << "Sorted array using Cocktail Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr3[i] << " ";
+    cout << "\n";
 
-    cout << "Sorted array: \n";
-    for(int i=0; i<n; i++)
-        cout << scalanie[i] << " ";
+    // Sortowanie Szybkie
+    int arr4[] = {64, 34, 25, 12, 22, 11, 90};
+    quickSort(arr4, 0, n - 1);
+    cout << "Sorted array using Quick Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr4[i] << " ";
+    cout << "\n";
+
+    // Sortowanie przez Scalanie
+    int arr5[] = {64, 34, 25, 12, 22, 11, 90};
+    mergeSort(arr5, 0, n - 1);
+    cout << "Sorted array using Merge Sort: \n";
+    for(int i = 0; i < n; i++)
+        cout << arr5[i] << " ";
     cout << "\n";
 
     return 0;

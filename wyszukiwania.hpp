@@ -1,10 +1,10 @@
 //wyszukiwanie linowe
-int search_linear(std::vector<int>& arr, int x);
+int search_linear(int arr[], int size, int x);
 //wyszukiwanie linowe z wartownikiem
-int search_linear_sentinel(std::vector<int>& arr, int x);
+int search_linear_sentinel(int arr[], int size, int x);
 //wyszukiwanie skokowe
-int search_jump(std::vector<int>& arr, int x);
+int search_jump(int arr[], int size, int x);
 //wyszukiwanie binarne
-int search_binary(std::vector<int>& arr, int x);
+int search_binary(int arr[], int size, int x);
 //wyszukiwanie interpolacyjne
-int search_interpolation(std::vector<int>& arr, int x);
+int search_interpolation(int arr[], int size, int x);

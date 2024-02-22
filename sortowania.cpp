@@ -2,19 +2,18 @@
 #include "sortowania.hpp"
 
 // babel
-int* bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n-1; i++) {     
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
         for (int j = 0; j < n-i-1; j++) {
             if (arr[j] > arr[j+1]) {
-                swap(arr[j], arr[j+1]);
+                std::swap(arr[j], arr[j+1]);
             }
         }
     }
-    return arr;
 }
 
-// wstawianuie
-int* insertionSort(int arr[], int n) {
+// Insertion Sort
+void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i];
         int j = i - 1;
@@ -24,10 +23,10 @@ int* insertionSort(int arr[], int n) {
         }
         arr[j + 1] = key;
     }
-    return arr;
 }
-//koktajl
-int* cocktailSort(int arr[], int n) {
+
+// Cocktail Sort
+void cocktailSort(int arr[], int n) {
     bool swapped = true;
     int start = 0;
     int end = n-1;
@@ -56,34 +55,31 @@ int* cocktailSort(int arr[], int n) {
 
         start++;
     }
-
-    return arr;
 }
 
-// szybki
+// Quick Sort
 int partition(int arr[], int low, int high) {
     int pivot = arr[high];
     int i = (low - 1);
     for (int j = low; j <= high- 1; j++) {
         if (arr[j] < pivot) {
             i++;
-            swap(arr[i], arr[j]);
+            std::swap(arr[i], arr[j]);
         }
     }
-    swap(arr[i + 1], arr[high]);
+    std::swap(arr[i + 1], arr[high]);
     return (i + 1);
 }
 
-int* quickSort(int arr[], int low, int high) {
+void quickSort(int arr[], int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
-    return arr;
 }
 
-// scalanie
+// Merge Sort
 void merge(int arr[], int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -117,12 +113,11 @@ void merge(int arr[], int l, int m, int r) {
     }
 }
 
-int* mergeSort(int arr[], int l, int r) {
+void mergeSort(int arr[], int l, int r) {
     if (l < r) {
         int m = l+(r-l)/2;
         mergeSort(arr, l, m);
         mergeSort(arr, m+1, r);
         merge(arr, l, m, r);
     }
-    return arr;
 }
