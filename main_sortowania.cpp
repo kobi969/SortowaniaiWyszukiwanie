@@ -2,10 +2,6 @@
 #include "sortowania.hpp"
 using namespace std;
 
-
-#include <iostream>
-using namespace std;
-
 // Funkcje sortujące i wyszukujące (search functions) zostają zdefiniowane i dodane tutaj.
 
 int main() {
