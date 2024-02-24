@@ -25,6 +25,7 @@ int search_linear_sentinel(int arr[], int size, int x) {
     }
 }
 
+
 int search_jump(int arr[], int size, int x) {
     int step = sqrt(size);
     int prev = 0;
